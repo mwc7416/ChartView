@@ -12,6 +12,14 @@ import java.util.List;
 
 /**
  * PieChart sample
+ * 实现目标及流程：
+ * 1.绘制基本图标
+ * 2.实现图表展开动画
+ * 3.绘制数据值的显示
+ * 4.绘制数据值的动画
+ * 5.绘制注释对应区
+ * 6.实现圆饼区域点击缩放效果
+ * 7.实现根据手势转动效果
  * Created by Ace on 2017/4/3.
  */
 
@@ -232,6 +240,9 @@ public class PieChart extends View {
         }
     }
 
+    /**
+     * 圆饼块
+     */
     public static class PieData {
         public PieData(String name, int color, int value) {
             this.name = name;
@@ -241,17 +252,18 @@ public class PieChart extends View {
             paint.setTextSize(20f);
         }
 
-        String name;
-        int value;
-        Paint paint;
+        String name;//数据名
+        int value;//数据值
+        Paint paint;//该笔数据使用的画笔（颜色，粗细，是否填充）
         boolean completeStatus = false;//记录该部分是否已经绘制完成
 
+        /**
+         * 获取该圆饼部分的实际角度
+         * @return
+         */
         public int getValue() {
             return 360 * value / 100;
         }
 
-        public void drawSelf(Canvas canvas) {
-
-        }
     }
 }
